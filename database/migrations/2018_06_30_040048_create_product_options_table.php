@@ -19,6 +19,8 @@ class CreateProductOptionsTable extends Migration
         });
         Schema::create('product_options_values', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('option_id');
+            $table->unsignedInteger('product_id');
             $table->foreign('option_id')->references('id')->on('product_options');
             $table->foreign('product_id')->references('id')->on('products');
             $table->string('name');
