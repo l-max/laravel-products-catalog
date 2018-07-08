@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Прайс-лист</title>
+    <title>@yield('title') - Администрирование</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

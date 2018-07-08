@@ -13,13 +13,17 @@
 
 Auth::routes();
 
-Route::get('/', 'PriceController@index');
-Route::get('/price', 'PriceController@index');
+//Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
+Route::group(['prefix' => 'admin'], function()
+{
+    Route::get('/', 'ProductController@index');
+    Route::get('/products', 'ProductController@index');
 
-Route::post('/price', 'PriceController@store');
-Route::get('/price/add', 'PriceController@add');
+    Route::post('/products', 'ProductController@store');
+    Route::get('/products/create', 'ProductController@create');
 
-Route::get('/price/edit/{price}', 'PriceController@edit');
-Route::post('/price/update', 'PriceController@update');
+    Route::get('/products/edit/{product}', 'ProductController@edit');
+    Route::post('/products/update', 'ProductController@update');
 
-Route::delete('/price/{price}', 'PriceController@destroy');
+    Route::delete('/products/{product}', 'ProductController@destroy');
+});
