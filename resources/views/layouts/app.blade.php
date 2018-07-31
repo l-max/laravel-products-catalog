@@ -11,69 +11,76 @@
     <title>Прайс-лист</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <script src="{{ asset('js/jquery-2.1.1.min.js') }}"></script>
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/stylesheet.css') }}" rel="stylesheet">
+
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    tapdom.ru
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<nav id="menu" class="navbar">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-ex1-collapse"><i class="glyphicon glyphicon-menu-hamburger"></i></button>
+            <span id="logo" class="">
+                    <a href="https://tapdom.ru/index.php?route=common/home"><img style="height: 40px"
+                                                                                 src="storage/main/main-logo.png"
+                                                                                 title="Tapdom" alt="Tapdom"
+                                                                                 class="img-responsive"></a>
+                </span>
+            <!--<div class="pull-right center-block" style="font-size: 16px; margin-top: 5px;">-->
+            <!--<a href="https://tapdom.ru/index.php?route=information/contact"><i class="glyphicon glyphicon-phone"></i></a> <span>+7 952 806 9447</span>-->
+            <!--</div>-->
+            <!--<span id="category" class="visible-xs">Категории</span>-->
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Косметички</a></li>
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Тапочки</a>
+                    <div class="dropdown-menu" style="">
+                        <div class="dropdown-inner">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Женские тапочки</a></li>
+                                <li><a href="#">Мужские тапочки</a></li>
+                                <li><a href="#">Детские тапочки</a></li>
+                            </ul>
+                        </div>
+                        <a href="#" class="see-all">Показать все Тапочки</a></div>
+                </li>
+            </ul>
+        </div>
 
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Вход</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
-                            </li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Выход
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
     </div>
+
+</nav>
+
+
+<main class="py-4">
+    @yield('content')
+</main>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <h5>Информация</h5>
+                <ul class="list-unstyled">
+                    <li><a href="https://tapdom.ru/index.php?route=information/information&amp;information_id=4">О
+                            нас</a></li>
+                    <li><a href="https://tapdom.ru/index.php?route=information/information&amp;information_id=6">Информация
+                            о доставке</a></li>
+                    <li><a href="https://tapdom.ru/index.php?route=information/contact">Связаться с нами</a></li>
+                    <li><a href="https://tapdom.ru/index.php?route=information/sitemap">Карта сайта</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p>Tapdom © 2018</p>
+    </div>
+</footer>
 </body>
 </html>

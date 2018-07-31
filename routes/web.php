@@ -16,14 +16,18 @@ Auth::routes();
 //Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
 Route::group(['prefix' => 'admin'], function()
 {
-    Route::get('/', 'ProductController@index');
-    Route::get('/products', 'ProductController@index');
+    Route::get('/', 'Admin\ProductController@index');
+    Route::get('/products', 'Admin\ProductController@index');
 
-    Route::post('/products', 'ProductController@store');
-    Route::get('/products/create', 'ProductController@create');
+    Route::post('/products', 'Admin\ProductController@store');
+    Route::get('/products/create', 'Admin\ProductController@create');
 
-    Route::get('/products/edit/{product}', 'ProductController@edit');
-    Route::post('/products/update', 'ProductController@update');
+    Route::get('/products/edit/{product}', 'Admin\ProductController@edit');
+    Route::post('/products/update', 'Admin\ProductController@update');
 
-    Route::delete('/products/{product}', 'ProductController@destroy');
+    Route::delete('/products/{product}', 'Admin\ProductController@destroy');
 });
+
+Route::get('/products', 'ProductController@index');
+
+Route::get('/', 'SiteController@index');

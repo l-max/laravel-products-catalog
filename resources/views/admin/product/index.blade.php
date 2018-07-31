@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <div class="float-right">
-            <form action="products/create">
+            <form action="/admin/products/create">
                 <button class="btn btn-success" title="Добавить товар">+</button>
             </form>
         </div>
