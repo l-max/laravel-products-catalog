@@ -3,11 +3,7 @@
 @section('title', 'Список товаров')
 
 @section('content')
-    <div class="container">
-        <div class="text-center center-block" style="font-size: 19px;margin-top: 5px;margin-bottom: 12px;">
-            <a href="https://tapdom.ru/index.php?route=information/contact"><i class="glyphicon glyphicon-phone"></i></a> <span>+7 952 806 9447</span>
-        </div>
-    </div>
+
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="https://tapdom.ru/index.php?route=common/home"><i class="glyphicon glyphicon-home"></i></a></li>
@@ -22,16 +18,6 @@
                     <a href="https://tapdom.ru/index.php?route=product/category&amp;path=20_60" class="list-group-item">&nbsp;&nbsp;&nbsp;- Мужские тапочки</a>
                     <a href="https://tapdom.ru/index.php?route=product/category&amp;path=20_62" class="list-group-item">&nbsp;&nbsp;&nbsp;- Детские тапочки</a>
                 </div>
-                <script type="text/javascript"><!--
-                    $('#banner0').owlCarousel({
-                        items: 6,
-                        autoPlay: 3000,
-                        singleItem: true,
-                        navigation: false,
-                        pagination: false,
-                        transitionStyle: 'fade'
-                    });
-                    --></script>
             </aside>
             <div id="content" class="col-sm-9">      <h1>Женские тапочки</h1>
                 <div class="row">

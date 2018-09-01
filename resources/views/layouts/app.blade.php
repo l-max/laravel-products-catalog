@@ -32,9 +32,6 @@
                                                                                  title="Tapdom" alt="Tapdom"
                                                                                  class="img-responsive"></a>
                 </span>
-            <!--<div class="pull-right center-block" style="font-size: 16px; margin-top: 5px;">-->
-            <!--<a href="https://tapdom.ru/index.php?route=information/contact"><i class="glyphicon glyphicon-phone"></i></a> <span>+7 952 806 9447</span>-->
-            <!--</div>-->
             <!--<span id="category" class="visible-xs">Категории</span>-->
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -53,6 +50,12 @@
                         <a href="#" class="see-all">Показать все Тапочки</a></div>
                 </li>
             </ul>
+
+            <div class="pull-right" style="font-size: 16px;margin-top: 10px;">
+                <a href="https://tapdom.ru/index.php?route=information/contact">
+                    <i class="glyphicon glyphicon-phone"></i>
+                </a> <span>+7 952 806 9447</span>
+            </div>
         </div>
 
     </div>
