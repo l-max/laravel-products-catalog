@@ -28,6 +28,6 @@ Route::group(['prefix' => 'admin'], function()
     Route::delete('/products/{product}', 'Admin\ProductController@destroy');
 });
 
-Route::get('/products', 'ProductController@index');
+Route::get('/products/{category}', 'ProductController@index')->where('category', '[0-9]+');
 
 Route::get('/', 'SiteController@index');

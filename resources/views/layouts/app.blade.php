@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Прайс-лист</title>
+    <title>@yield('title') - Tapdom</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery-2.1.1.min.js') }}"></script>
@@ -27,27 +27,27 @@
             <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse"
                     data-target=".navbar-ex1-collapse"><i class="glyphicon glyphicon-menu-hamburger"></i></button>
             <span id="logo" class="">
-                    <a href="https://tapdom.ru/index.php?route=common/home"><img style="height: 40px"
-                                                                                 src="storage/main/main-logo.png"
-                                                                                 title="Tapdom" alt="Tapdom"
-                                                                                 class="img-responsive"></a>
+                    <a href="/index.php?route=common/home">
+                        <img style="height: 40px" src="/storage/main/main-logo.png" title="Tapdom" alt="Tapdom"
+                             class="img-responsive">
+                    </a>
                 </span>
             <!--<span id="category" class="visible-xs">Категории</span>-->
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
 
             <ul class="nav navbar-nav">
-                <li><a href="#">Косметички</a></li>
+                <li><a href="/products/1">Косметички</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Тапочки</a>
                     <div class="dropdown-menu" style="">
                         <div class="dropdown-inner">
                             <ul class="list-unstyled">
-                                <li><a href="#">Женские тапочки</a></li>
-                                <li><a href="#">Мужские тапочки</a></li>
-                                <li><a href="#">Детские тапочки</a></li>
+                                <li><a href="/products/3">Женские тапочки</a></li>
+                                <li><a href="/products/4">Мужские тапочки</a></li>
+                                <li><a href="/products/5">Детские тапочки</a></li>
                             </ul>
                         </div>
-                        <a href="#" class="see-all">Показать все Тапочки</a></div>
+                        <a href="/products/2" class="see-all">Показать все Тапочки</a></div>
                 </li>
             </ul>
 
