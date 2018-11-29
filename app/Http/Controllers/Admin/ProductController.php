@@ -24,7 +24,7 @@ class ProductController extends Controller
     public function index()
     {
         return view('admin.product.index', [
-            'products' => Product::query()->paginate(8)
+            'products' => Product::query()->paginate(25),
         ]);
     }
 
@@ -36,7 +36,7 @@ class ProductController extends Controller
     public function create()
     {
         return view('admin.product.create', [
-            'categories' => Category::all()
+            'categories' => Category::all(),
         ]);
     }
 
@@ -44,13 +44,14 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request, [
-            'art' => 'required|max:255',
-            'name' => 'required|max:255',
+            'art'         => 'required|max:255',
+            'name'        => 'required|max:255',
             'description' => 'required|max:255',
         ]);
 
@@ -61,12 +62,13 @@ class ProductController extends Controller
             );
         }
         Product::query()->create([
-            'art' => $request->art,
-            'name' => $request->name,
+            'art'         => $request->art,
+            'name'        => $request->name,
             'description' => $request->description,
             'category_id' => $request->category,
-            'image' => $image
+            'image'       => $image,
         ]);
+
         return redirect('/admin/products');
     }
 
@@ -74,17 +76,19 @@ class ProductController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Product $product
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
     {
         $product = Product::query()->find($product->id);
-        if (!$product) {
+        if ( !$product) {
             abort(404);
         }
+
         return view('admin.product.edit', [
-            'product' => $product,
-            'categories' => Category::all()
+            'product'    => $product,
+            'categories' => Category::all(),
         ]);
     }
 
@@ -92,14 +96,15 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Product $product
+     * @param  \App\Product             $product
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Product $product)
     {
         $this->validate($request, [
-            'art' => 'required|max:255',
-            'name' => 'required|max:255',
+            'art'         => 'required|max:255',
+            'name'        => 'required|max:255',
             'description' => 'required|max:255',
         ]);
 
@@ -110,13 +115,18 @@ class ProductController extends Controller
             );
         }
 
-        Product::query()->update([
-            'art' => $request->art,
-            'name' => $request->name,
-            'description' => $request->description,
-            'category_id' => $request->category,
-            'image' => ($request->image) ? $request->image : $image
-        ]);
+        $product->art         = $request->art;
+        $product->name        = $request->name;
+        $product->description = $request->description;
+        $product->category_id = $request->category;
+
+        if ($image) {
+            Storage::disk('public')->delete(basename($product->image));
+            $product->image = $image;
+        }
+
+        $product->save();
+
         return redirect('/admin/products');
     }
 
@@ -131,11 +141,27 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product = Product::query()->find($product->id);
-        if (!$product) {
+        if ( !$product) {
             abort(404);
         }
         $product->delete();
 
         return redirect('/admin/products');
     }
+
+    /**
+     * @param Product $product
+     */
+    public function deleteImage(Product $product)
+    {
+        if ( !$product) {
+            abort(404);
+        }
+        if ($product->image) {
+            Storage::disk('public')->delete(basename($product->image));
+            $product->image = null;
+            $product->save();
+        }
+    }
+
 }

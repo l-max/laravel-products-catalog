@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $name
  * @property $description
  * @property $category_id
- * @property $image
+ * @property string $image
  */
 class Product extends Model
 {
